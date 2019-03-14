@@ -43,22 +43,38 @@ function displayResults(responseJson){
     console.log(responseJson);
     $('#js-errorMessage').empty();
     let max = $('#js-maxResults').val();
+    let bbcHTML = '';
     let newHTML = '';
     for (let i = 0; i < responseJson.articles.length & i<max; i ++){
-    newHTML +=
+      if ( responseJson.articles[i].source.name == "BBC News"){
+    bbcHTML +=
     `<div class="newsColumn">
-    <h3>${responseJson.articles[i].source.name}</h3>
     <h4>${responseJson.articles[i].title}</h4>
     <img src='${responseJson.articles[i].urlToImage}'>
     <p>${responseJson.articles[i].description}</p>
     <a href ="${responseJson.articles[i].url}" target="_blank">
     ${responseJson.articles[i].url}</a>
-    </div>` 
+    </div>`;
+    $('.bbc').html(
+      `${bbcHTML}`);
+    $('.bbcTitle').css('display','block'); 
     }
-    $('.results').html(
-      `${newHTML}`);
-    $('.text').removeClass('hidden');
-} 
+
+    else if ( responseJson.articles[i].source.name == "The New York Times"){
+      newHTML +=
+      `<div class="newsColumn">
+      <h4>${responseJson.articles[i].title}</h4>
+      <img src='${responseJson.articles[i].urlToImage}'>
+      <p>${responseJson.articles[i].description}</p>
+      <a href ="${responseJson.articles[i].url}" target="_blank">
+      ${responseJson.articles[i].url}</a>
+      </div>`;
+      $('.newYorkTimes').html(
+        `${newHTML}`);
+      $('.newYorkTimesTitle').css('display','block'); 
+      }
+    
+} }
 
 
 function watchForm() {
@@ -68,9 +84,18 @@ function watchForm() {
     let currentSelectedSources = $('.js-sourceSelection')
 
     event.preventDefault();
+    clear();
     UrlConstruction(searchValue, sortOrder, currentSelectedSources);
   });
 }
+
+function clear(){
+  $('.bbcTitle').css('display','none');
+  $('.newYorkTimesTitle').css('display','none'); 
+  $('.results').empty();
+
+}
+
 
 $(function() {
   console.log('App loaded! Waiting for submit!');

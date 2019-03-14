@@ -11,10 +11,6 @@ body {
   margin: 0 auto;
 }
 
-.hidden {
-  display: none;
-}
-
 img {
   max-width: 500px;
   margin: 0 auto;
@@ -26,4 +22,17 @@ label{
 
 .results{
   display:flex;
+}
+
+h3{
+  margin: 0px 0px;
+  padding-top:20px;
+}
+
+.bbcTitle{
+  display: none;
+}
+
+.newYorkTimesTitle{
+  display: none;
 }

@@ -13,7 +13,7 @@
       <h2>News Search Parameters</h2>
       <form role='searchForm'>      
       <label for="parkName">News Topic</label>
-          <input type="text" id="js-searchEntry" value='bitcoin'>
+          <input type="text" id="js-searchEntry" value='Trump'>
           <button type="search" type='submit'>Search!</button>
         
       <label for="outlet"><br/>Sources</label>
@@ -33,11 +33,20 @@
             <input type="number" id="js-maxResults" value="10">
       </form>
 
-      <span class='text hidden'><p></p></span>
-      <section class="results">
-         <div class="newsColumn"></div>
+      <section name='Results'>
+
+      <span class='bbcTitle'><h3>BBC News</h3></span>
+      <div class="bbc results">
+      </div>
+      <span class='newYorkTimesTitle'><h3>New York Times</h3></span>
+      <div class="newYorkTimes results">
+      </div>
       </section>
-      <p id='js-errorMessage'class='errorMessage'></p> 
+
+
+
+
+    <p id='js-errorMessage'class='errorMessage'></p> 
     </div>
     <script src="script.js"></script>
 </body>
