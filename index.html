@@ -17,20 +17,20 @@
           <button type="search" type='submit'>Search!</button>
         
       <label for="outlet"><br/>Sources</label>
-            <input type="checkbox" class="js-sourceSelection" value="bbc-news">BBC News</input>
-            <input type="checkbox" class="js-sourceSelection" value="the-new-york-times">New York Times</input>
-            <input type="checkbox" class="js-sourceSelection" value="fox-news">Fox News</input>
-            <input type="checkbox" class="js-sourceSelection" value="cnn">CNN</input>
+            <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news">BBC News</input>
+            <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">New York Times</input>
+            <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">Fox News</input>
+            <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn">CNN</input>
             
       <label for="sortBy"><br/>Sort By</label>   
       <select name='Sort By'id="js-sortOrder"> 
             <option value="publishedAt">Newest</option>
-            <option value="popularity">Popularity</option>
-            <option value="relevancy">Relevancy</option>
+            <option value="popularity">Popular</option>
+            <option value="relevancy">Relevant</option>
       </select>
 
       <label for="maxResults"><br/>Maximum results</label>
-            <input type="number" id="js-maxResults" value="30">
+            <input type="number" id="js-maxResults" value="20">
       </form>
 
       <section name='Results'>
