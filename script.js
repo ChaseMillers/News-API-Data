@@ -27,9 +27,8 @@ function UrlConstruction(searchValue, sortOrder, currentSelectedSources) {
           newsSource += $(currentSelectedSources[i]).val()+',';
       }
   }
-    
     const key = {headers: new Headers ({"X-Api-Key": apiKey})};
-    let url = 'https://newsapi.org/v2/everything?q=$' +
+    let url = 'https://newsapi.org/v2/everything?language=en&pageSize=100&q=' +
     searchValue + 
     sortOrder + "sources=" +
     newsSource; 
@@ -43,10 +42,18 @@ function displayResults(responseJson){
     console.log(responseJson);
     $('#js-errorMessage').empty();
     let max = $('#js-maxResults').val();
+    let topHTML = '';
     let bbcHTML = '';
     let newHTML = '';
-    for (let i = 0; i < responseJson.articles.length & i<max; i ++){
-      if ( responseJson.articles[i].source.name == "BBC News"){
+    let foxHTML = '';
+    let cnnHTML = '';
+    let bbcValue = $('#bbcCheck:checked').val();
+    let newYorkTimesValue = $('#newYorkTimesCheck:checked').val();
+    let foxValue = $('#foxCheck:checked').val();
+    let cnnValue = $('#cnnCheck:checked').val();
+ 
+    for (let i = 0; i < responseJson.articles.length && i<max; i ++){
+      if ( responseJson.articles[i].source.name == "BBC News" && bbcValue == 'bbc-news'){
     bbcHTML +=
     `<div class="newsColumn">
     <h4>${responseJson.articles[i].title}</h4>
@@ -55,12 +62,12 @@ function displayResults(responseJson){
     <a href ="${responseJson.articles[i].url}" target="_blank">
     ${responseJson.articles[i].url}</a>
     </div>`;
-    $('.bbc').html(
+    $('#bbc').html(
       `${bbcHTML}`);
-    $('.bbcTitle').css('display','block'); 
+    $('.bbcTitle, #bbc').css('display','flex'); 
     }
 
-    else if ( responseJson.articles[i].source.name == "The New York Times"){
+    else if ( responseJson.articles[i].source.name == "The New York Times" && newYorkTimesValue == 'the-new-york-times'){
       newHTML +=
       `<div class="newsColumn">
       <h4>${responseJson.articles[i].title}</h4>
@@ -69,11 +76,52 @@ function displayResults(responseJson){
       <a href ="${responseJson.articles[i].url}" target="_blank">
       ${responseJson.articles[i].url}</a>
       </div>`;
-      $('.newYorkTimes').html(
+      $('#newYorkTimes').html(
         `${newHTML}`);
-      $('.newYorkTimesTitle').css('display','block'); 
+      $('.newYorkTimesTitle, #newYorkTimes').css('display','flex'); 
       }
-    
+
+    else if ( responseJson.articles[i].source.name == "Fox News" && foxValue == 'fox-news'){
+      foxHTML +=
+      `<div class="newsColumn">
+      <h4>${responseJson.articles[i].title}</h4>
+      <img src='${responseJson.articles[i].urlToImage}'>
+      <p>${responseJson.articles[i].description}</p>
+      <a href ="${responseJson.articles[i].url}" target="_blank">
+      ${responseJson.articles[i].url}</a>
+      </div>`;
+      $('#fox').html(
+        `${foxHTML}`);
+      $('.foxTitle, #fox').css('display','flex'); 
+      }
+
+      else if ( responseJson.articles[i].source.name == "CNN" && cnnValue == 'cnn'){
+        cnnHTML +=
+        `<div class="newsColumn">
+        <h4>${responseJson.articles[i].title}</h4>
+        <img src='${responseJson.articles[i].urlToImage}'>
+        <p>${responseJson.articles[i].description}</p>
+        <a href ="${responseJson.articles[i].url}" target="_blank">
+        ${responseJson.articles[i].url}</a>
+        </div>`;
+        $('#cnn').html(
+          `${cnnHTML}`);
+        $('.cnnTitle, #cnn').css('display','flex'); 
+        }
+        
+    else {
+      topHTML +=
+      `<div class="newsColumn">
+      <h4>${responseJson.articles[i].title}</h4>
+      <img src='${responseJson.articles[i].urlToImage}'>
+      <p>${responseJson.articles[i].description}</p>
+      <a href ="${responseJson.articles[i].url}" target="_blank">
+      ${responseJson.articles[i].url}</a>
+      </div>`;
+      $('#topHeadLines').html(
+        `${topHTML}`);
+      $('.topHeadLinesTitle, #topHeadLines').css('display','flex');
+    }
 } }
 
 
@@ -82,7 +130,8 @@ function watchForm() {
     let searchValue = $('#js-searchEntry').val()+'&';
     let sortOrder = 'sortBy='+ $('#js-sortOrder').val()+'&';
     let currentSelectedSources = $('.js-sourceSelection')
-
+    let title = $("#js-sortOrder option:selected").text();
+    $(".topHeadLinesTitle").html(`<h3>${title} Headlines</h3>`)
     event.preventDefault();
     clear();
     UrlConstruction(searchValue, sortOrder, currentSelectedSources);
@@ -90,8 +139,11 @@ function watchForm() {
 }
 
 function clear(){
-  $('.bbcTitle').css('display','none');
-  $('.newYorkTimesTitle').css('display','none'); 
+  $('.bbcTitle, #bbc').css('display','none');
+  $('.newYorkTimesTitle, #newYorkTimes').css('display','none'); 
+  $('.topHeadLinesTitle, #topHeadLines').css('display','none');
+  $('.foxTitle, #fox').css('display','none'); 
+  $('.cnnTitle, #cnn').css('display','none');
   $('.results').empty();
 
 }

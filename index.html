@@ -30,20 +30,28 @@
       </select>
 
       <label for="maxResults"><br/>Maximum results</label>
-            <input type="number" id="js-maxResults" value="10">
+            <input type="number" id="js-maxResults" value="30">
       </form>
 
       <section name='Results'>
 
-      <span class='bbcTitle'><h3>BBC News</h3></span>
-      <div class="bbc results">
-      </div>
-      <span class='newYorkTimesTitle'><h3>New York Times</h3></span>
-      <div class="newYorkTimes results">
-      </div>
-      </section>
+        <span class='topHeadLinesTitle'></span>
+        <div class="results" id="topHeadLines">
+        </div>
+        <span class='bbcTitle'><h3>BBC News</h3></span>
+        <div class="results" id='bbc'>
+        </div>
+        <span class='newYorkTimesTitle'><h3>New York Times</h3></span>
+        <div class="results" id="newYorkTimes">
+        </div>
+        <span class='foxTitle'><h3>Fox News</h3></span>
+        <div class="results" id="fox">
+        </div>
+        <span class='cnnTitle'><h3>CNN</h3></span>
+        <div class="results" id="cnn">
+        </div>
 
-
+        </section>
 
 
     <p id='js-errorMessage'class='errorMessage'></p> 

@@ -20,19 +20,35 @@ label{
   display:block;
 }
 
-.results{
-  display:flex;
-}
-
 h3{
   margin: 0px 0px;
   padding-top:20px;
 }
 
-.bbcTitle{
+.results{
+  display:flex;
+  border: 1px solid #ccc;
+  height: 480px;
+  overflow: auto;
+  position: relative;
+}
+
+.topHeadLinesTitle, #topHeadLines{
   display: none;
 }
 
-.newYorkTimesTitle{
+.bbcTitle, #bbc{
+  display: none;
+}
+
+.newYorkTimesTitle, #newYorkTimes{
+  display: none;
+}
+
+.foxTitle, #fox{
+  display: none;
+}
+
+.cnnTitle, #cnn{
   display: none;
 }
