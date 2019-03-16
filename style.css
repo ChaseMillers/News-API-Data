@@ -33,7 +33,7 @@ h3{
   position: relative;
 }
 
-.topHeadLinesTitle, #topHeadLines{
+.elseTitle, #else{
   display: none;
 }
 

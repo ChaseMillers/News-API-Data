@@ -1,12 +1,13 @@
 'use strict';
 const apiKey = '23bde539d93344af9341bf30f0ac89fc'
 
-function fetchInfo(bbcUrl, newYorkTimesUrl, foxUrl, cnnUrl, elseUrl) {
-  console.log (bbcUrl, newYorkTimesUrl, foxUrl, cnnUrl)
+function fetchInfo(currentURL, currentSource) {
+  console.log (currentURL)
   const key = {headers: new Headers ({"X-Api-Key": apiKey})};
   
-  if(bbcUrl !== ''){
-    fetch (bbcUrl,key)
+  if(currentSource == 'BBC'){
+    console.log(`${currentURL}this is the bbcUrl`);
+    fetch (currentURL,key)
     .then(response => {
         if (response.ok) {
           return response.json();
@@ -15,12 +16,16 @@ function fetchInfo(bbcUrl, newYorkTimesUrl, foxUrl, cnnUrl, elseUrl) {
       })
       .then(responseJson => displayResults(responseJson))
       .catch(err => {
-        $('#js-errorMessage').text(`There are no matching search results`);
-        $('.results').empty();
+        $('.bbcTitle, #bbc').css('display','flex'); 
+        $('#bbc').html(
+        `<div class="newsColumn">
+        <h4>BBC has no search results for this topic.</h4>
+        </div>`);
     });
   }
-  else if(newYorkTimesUrl !== ''){
-    fetch (newYorkTimesUrl,key)
+  
+  else if(currentSource == 'NYT'){
+    fetch (currentURL,key)
     .then(response => {
         if (response.ok) {
           return response.json();
@@ -29,12 +34,15 @@ function fetchInfo(bbcUrl, newYorkTimesUrl, foxUrl, cnnUrl, elseUrl) {
       })
       .then(responseJson => displayResults(responseJson))
       .catch(err => {
-        $('#js-errorMessage').text(`There are no matching search results`);
-        $('.results').empty();
+        $('.newYorkTimesTitle, #newYorkTimes').css('display','flex');
+        $('#newYorkTimes').html(
+        `<div class="newsColumn">
+        <h4>The New York Times has no search results for this topic.</h4>
+        </div>`);
       });
     }
-  else if(foxUrl !== ''){
-      fetch (foxUrl,key)
+  else if(currentSource == 'FOX'){
+      fetch (currentURL,key)
       .then(response => {
           if (response.ok) {
             return response.json();
@@ -43,12 +51,15 @@ function fetchInfo(bbcUrl, newYorkTimesUrl, foxUrl, cnnUrl, elseUrl) {
         })
         .then(responseJson => displayResults(responseJson))
         .catch(err => {
-          $('#js-errorMessage').text(`There are no matching search results`);
-          $('.results').empty();
+           $('.foxTitle, #fox').css('display','flex');
+        $('#fox').html(
+        `<div class="newsColumn">
+        <h4>Fox News has no search results for this topic.</h4>
+        </div>`);
         });
       }
-    else if(cnnUrl !== ''){
-        fetch (cnnUrl,key)
+    else if(currentSource == 'CNN'){
+        fetch (currentURL,key)
         .then(response => {
             if (response.ok) {
               return response.json();
@@ -57,12 +68,15 @@ function fetchInfo(bbcUrl, newYorkTimesUrl, foxUrl, cnnUrl, elseUrl) {
           })
           .then(responseJson => displayResults(responseJson))
           .catch(err => {
-            $('#js-errorMessage').text(`There are no matching search results`);
-            $('.results').empty();
-          });
-        }
+                  $('.cnnTitle, #cnn').css('display','flex');
+        $('#cnn').html(
+        `<div class="newsColumn">
+        <h4>CNN has no search results for this topic.</h4>
+        </div>`);
+        });
+      }
         else{
-          fetch (elseUrl,key)
+          fetch (currentURL,key)
           .then(response => {
               if (response.ok) {
                 return response.json();
@@ -71,26 +85,28 @@ function fetchInfo(bbcUrl, newYorkTimesUrl, foxUrl, cnnUrl, elseUrl) {
             })
             .then(responseJson => displayResults(responseJson))
             .catch(err => {
-              $('#js-errorMessage').text(`There are no matching search results`);
-              $('.results').empty();
-            });
-          }
-}
+              $('.elseTitle, #else').css('display','flex');
+              $('#else').html(
+              `<div class="newsColumn">
+              <h4>There are no search results for this topic.</h4>
+              </div>`);
+              });
+            }
+        }
 
 function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
-    console.log(`${searchValue} is the search value`);
-    
     let bbcValue = $('#bbcCheck:checked').val();
     let newYorkTimesValue = $('#newYorkTimesCheck:checked').val();
     let foxValue = $('#foxCheck:checked').val();
     let cnnValue = $('#cnnCheck:checked').val();
-      
+    
   if(bbcValue == 'bbc-news'){
+    console.log(`${bbcValue} is the bbc vaule AHHHHHH`);
     let bbcUrl = 'https://newsapi.org/v2/everything?language=en&sources=bbc-news&' +
     searchValue + 
     max +
     sortBy;
-    fetchInfo(bbcUrl);
+    fetchInfo(bbcUrl, "BBC");
   }
 
   if(newYorkTimesValue == 'the-new-york-times'){
@@ -98,7 +114,7 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
     searchValue + 
     max +
     sortBy;
-    fetchInfo(newYorkTimesUrl);
+    fetchInfo(newYorkTimesUrl, "NYT");
   }
 
   if(foxValue == 'fox-news'){
@@ -106,7 +122,7 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
     searchValue + 
     max +
     sortBy;
-    fetchInfo(foxUrl);
+    fetchInfo(foxUrl, "FOX");
   }
 
   if(cnnValue == 'cnn'){
@@ -114,7 +130,7 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
     searchValue + 
     max +
     sortBy;
-    fetchInfo(cnnUrl);
+    fetchInfo(cnnUrl, "CNN");
   }
 
   else if (currentSelectedSources == undefined){
@@ -122,7 +138,7 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
     searchValue + 
     max +
     sortBy;
-    fetchInfo(elseUrl);
+    fetchInfo(elseUrl, "ELSE");
   }
 }
 
@@ -130,7 +146,7 @@ function displayResults(responseJson){
     console.log(responseJson);
     $('#js-errorMessage').empty();
 
-    let topHTML = '';
+    let elseHTML = '';
     let bbcHTML = '';
     let newHTML = '';
     let foxHTML = '';
@@ -139,8 +155,9 @@ function displayResults(responseJson){
     let newYorkTimesValue = $('#newYorkTimesCheck:checked').val();
     let foxValue = $('#foxCheck:checked').val();
     let cnnValue = $('#cnnCheck:checked').val();
- 
-    for (let i = 0; i < responseJson.articles.length; i ++){
+    
+
+    for (let i = 0; i < responseJson.articles.length || responseJson.totalResults==0; i ++){
       if ( responseJson.articles[i].source.name == "BBC News" && bbcValue == 'bbc-news'){
     bbcHTML +=
     `<div class="newsColumn">
@@ -154,7 +171,7 @@ function displayResults(responseJson){
       `${bbcHTML}`);
     $('.bbcTitle, #bbc').css('display','flex'); 
     }
-
+    
     else if ( responseJson.articles[i].source.name == "The New York Times" && newYorkTimesValue == 'the-new-york-times'){
       newHTML +=
       `<div class="newsColumn">
@@ -198,7 +215,7 @@ function displayResults(responseJson){
       }
       
     else {
-      topHTML +=
+      elseHTML +=
       `<div class="newsColumn">
       <h4>${responseJson.articles[i].title}</h4>
       <img src='${responseJson.articles[i].urlToImage}'>
@@ -206,9 +223,9 @@ function displayResults(responseJson){
       <a href ="${responseJson.articles[i].url}" target="_blank">
       ${responseJson.articles[i].url}</a>
       </div>`;
-      $('#topHeadLines').html(
-        `${topHTML}`);
-      $('.topHeadLinesTitle, #topHeadLines').css('display','flex');
+      $('#else').html(
+        `${elseHTML}`);
+      $('.elseTitle, #else').css('display','flex');
     }
 } }
 
@@ -219,8 +236,8 @@ function watchForm() {
     let sortBy = 'sortBy='+ $('#js-sortOrder').val();
     let title = $("#js-sortOrder option:selected").text();
     let currentSelectedSources = $('.js-sourceSelection:checked').val();
-    console.log(`this is ${currentSelectedSources}`);
-    $(".topHeadLinesTitle").html(`<h3>${title} Headlines</h3>`)
+    
+    $(".elseTitle").html(`<h3>${title} Headlines</h3>`)
     event.preventDefault();
     clear();
     UrlConstruction(searchValue, sortBy, currentSelectedSources, max);
@@ -230,7 +247,7 @@ function watchForm() {
 function clear(){
   $('.bbcTitle, #bbc').css('display','none');
   $('.newYorkTimesTitle, #newYorkTimes').css('display','none'); 
-  $('.topHeadLinesTitle, #topHeadLines').css('display','none');
+  $('.elseTitle, #else').css('display','none');
   $('.foxTitle, #fox').css('display','none'); 
   $('.cnnTitle, #cnn').css('display','none');
   $('.results').empty();

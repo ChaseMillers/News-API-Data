@@ -12,13 +12,13 @@
     <div class="container">
       <h2>News Search Parameters</h2>
       <form role='searchForm'>      
-      <label for="parkName">News Topic</label>
-          <input type="text" id="js-searchEntry" value='Trump'>
+      <label for="News Topic">News Topic</label>
+          <input type="text" id="js-searchEntry" placeholder=''value=''>
           <button type="search" type='submit'>Search!</button>
         
       <label for="outlet"><br/>Sources</label>
             <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news">BBC News</input>
-            <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">New York Times</input>
+            <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">The New York Times</input>
             <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">Fox News</input>
             <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn">CNN</input>
             
@@ -35,8 +35,8 @@
 
       <section name='Results'>
 
-        <span class='topHeadLinesTitle'></span>
-        <div class="results" id="topHeadLines">
+        <span class='elseTitle'></span>
+        <div class="results" id="else">
         </div>
         <span class='bbcTitle'><h3>BBC News</h3></span>
         <div class="results" id='bbc'>
@@ -50,11 +50,8 @@
         <span class='cnnTitle'><h3>CNN</h3></span>
         <div class="results" id="cnn">
         </div>
-
         </section>
 
-
-    <p id='js-errorMessage'class='errorMessage'></p> 
     </div>
     <script src="script.js"></script>
 </body>
