@@ -189,7 +189,7 @@ function displayResults(responseJson){
     else if ( responseJson.articles[i].source.name == "Fox News" && foxValue == 'fox-news'){
       foxHTML +=
       `<div class="newsColumn">
-      <h4>${responseJson.articles[i].title}</h4>
+      <h4><b>${responseJson.articles[i].title}</b></h4>
       <img src='${responseJson.articles[i].urlToImage}'>
       <p>${responseJson.articles[i].description}</p>
       <a href ="${responseJson.articles[i].url}" target="_blank">

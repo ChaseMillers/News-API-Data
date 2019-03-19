@@ -4,23 +4,57 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+
 }
 
 .container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 100px auto;
 }
-
-img {
+.header{
+  height:60px;
+  color:white;
+  background: linear-gradient(0deg, rgb(255, 255, 255), rgb(252, 46, 9));
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+.newsColumn img {
   max-width: 500px;
-  margin: 0 auto;
+  max-height:250px;
+  display: inline-block;
+ margin-left:auto;
+ margin-right:auto;
+}
+button{
+  background:rgb(221, 218, 24);
+  width:70px;
+  height:22px;
+  border: none;
+  transition: .4s;
+}
+button:hover{
+  background:rgb(252, 46, 9);
+  transition: .4s;
 }
 
 label{
   display:block;
 }
 
+h1{
+  font-family: 'Enriqueta', serif;
+  text-align: center;
+  margin: 10px auto;
+}
+h2{
+  font-family: 'Enriqueta', serif;
+}
 h3{
+  font-family: 'Enriqueta', serif;
   margin: 0px 0px;
   padding-top:20px;
 }
@@ -32,23 +66,76 @@ h3{
   overflow: auto;
   position: relative;
 }
+.newsColumn{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 10px 10px;
+  font-size:13px;
+  padding:0 20px;
+  width:600px;
+  background-color:rgb(228, 228, 228);
+}
+.newsColumn p{
+  width: 500px;
+}
 
+.js-sourceSelection{
+  display: inline-block;
+padding-bottom:500px;
+}
 .elseTitle, #else{
   display: none;
 }
 
+.bbcLogo{
+width: 110px;
+height: auto;
+}
 .bbcTitle, #bbc{
   display: none;
 }
 
+.NYTlogo{
+  width: 90px;
+  height: auto;
+}
 .newYorkTimesTitle, #newYorkTimes{
   display: none;
 }
 
+.foxLogo{
+  width: 90px;
+height: auto;
+}
 .foxTitle, #fox{
   display: none;
 }
 
+.cnnLogo{
+  width: 90px;
+  height: auto;
+}
 .cnnTitle, #cnn{
   display: none;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 20px;
+  height:25px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:rgb(218, 214, 10); 
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background:rgb(218, 214, 10); 
 }

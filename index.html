@@ -10,17 +10,22 @@
 </head>
 <body>
     <div class="container">
-      <h2>News Search Parameters</h2>
+      <div class="header"><h1>All In One News</h1></div>
+      <h2>Parameters:</h2>
       <form role='searchForm'>      
       <label for="News Topic">News Topic</label>
           <input type="text" id="js-searchEntry" placeholder=''value=''>
-          <button type="search" type='submit'>Search!</button>
+          <button type="search" type='submit' class="button">Search!</button>
         
-      <label for="outlet"><br/>Sources</label>
-            <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news">BBC News</input>
-            <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">The New York Times</input>
-            <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">Fox News</input>
-            <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn">CNN</input>
+      <label for="outlet"class="sourcesContainer"><br/>Sources</label>
+            <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news"><img class="bbcLogo" 
+            src="https://stopgendercide.org/wp-content/uploads/2018/09/bbc-news-sex-selective-abortion.jpg"></input>
+            <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">
+        <img class="NYTlogo" src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"> </input>
+            <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">
+            <img class="foxLogo"src="http://editorial.designtaxi.com/editorial-images/news-fox22092017/1.jpg"></input>
+            <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn"><img class="cnnLogo" 
+            src="https://i1.wp.com/obeygiant.com/images/2017/01/cnn-logo-square.png?ssl=1"></input>
             
       <label for="sortBy"><br/>Sort By</label>   
       <select name='Sort By'id="js-sortOrder"> 
@@ -41,7 +46,7 @@
         <span class='bbcTitle'><h3>BBC News</h3></span>
         <div class="results" id='bbc'>
         </div>
-        <span class='newYorkTimesTitle'><h3>New York Times</h3></span>
+        <span class='newYorkTimesTitle'><h3>The New York Times</h3></span>
         <div class="results" id="newYorkTimes">
         </div>
         <span class='foxTitle'><h3>Fox News</h3></span>
