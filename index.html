@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My News Collection</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -18,14 +19,18 @@
           <button type="search" type='submit' class="button">Search!</button>
         
       <label for="outlet"class="sourcesContainer"><br/>Sources</label>
+            <label class="boxes">
             <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news"><img class="bbcLogo" 
-            src="https://stopgendercide.org/wp-content/uploads/2018/09/bbc-news-sex-selective-abortion.jpg"></input>
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/BBC_News.svg/1280px-BBC_News.svg.png"></label>
+            <label class="boxes">
             <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">
-        <img class="NYTlogo" src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"> </input>
+        <img class="NYTlogo" src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"> </label>
+            <label class="boxes">
             <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">
-            <img class="foxLogo"src="http://editorial.designtaxi.com/editorial-images/news-fox22092017/1.jpg"></input>
+            <img class="foxLogo"src="http://editorial.designtaxi.com/editorial-images/news-fox22092017/1.jpg"></label>
+            <label class="boxes">
             <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn"><img class="cnnLogo" 
-            src="https://i1.wp.com/obeygiant.com/images/2017/01/cnn-logo-square.png?ssl=1"></input>
+            src="https://i1.wp.com/obeygiant.com/images/2017/01/cnn-logo-square.png?ssl=1"></label>
             
       <label for="sortBy"><br/>Sort By</label>   
       <select name='Sort By'id="js-sortOrder"> 
@@ -38,22 +43,22 @@
             <input type="number" id="js-maxResults" value="20">
       </form>
 
-      <section name='Results'>
+      <section  name='Results'>
 
         <span class='elseTitle'></span>
-        <div class="results" id="else">
+        <div class="results slider" id="else">
         </div>
         <span class='bbcTitle'><h3>BBC News</h3></span>
-        <div class="results" id='bbc'>
+        <div class="results slider" id='bbc'>
         </div>
         <span class='newYorkTimesTitle'><h3>The New York Times</h3></span>
-        <div class="results" id="newYorkTimes">
+        <div class="results slider" id="newYorkTimes">
         </div>
         <span class='foxTitle'><h3>Fox News</h3></span>
-        <div class="results" id="fox">
+        <div class="results slider" id="fox">
         </div>
         <span class='cnnTitle'><h3>CNN</h3></span>
-        <div class="results" id="cnn">
+        <div class="results slider" id="cnn"><p>&#8680;</p>
         </div>
         </section>
 
