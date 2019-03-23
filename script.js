@@ -2,11 +2,9 @@
 const apiKey = '23bde539d93344af9341bf30f0ac89fc'
 
 function fetchInfo(currentURL, currentSource) {
-  console.log (currentURL)
   const key = {headers: new Headers ({"X-Api-Key": apiKey})};
   
   if(currentSource == 'BBC'){
-    console.log(`${currentURL}this is the bbcUrl`);
     fetch (currentURL,key)
     .then(response => {
         if (response.ok) {
@@ -101,7 +99,6 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
     let cnnValue = $('#cnnCheck:checked').val();
     
   if(bbcValue == 'bbc-news'){
-    console.log(`${bbcValue} is the bbc vaule AHHHHHH`);
     let bbcUrl = 'https://newsapi.org/v2/everything?language=en&sources=bbc-news&' +
     searchValue + 
     max +
@@ -143,7 +140,6 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
 }
 
 function displayResults(responseJson){ 
-    console.log(responseJson);
     $('#js-errorMessage').empty();
 
     let elseHTML = '';
