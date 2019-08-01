@@ -2,9 +2,11 @@
 const apiKey = '23bde539d93344af9341bf30f0ac89fc'
 
 function fetchInfo(currentURL, currentSource) {
+  console.log (currentURL)
   const key = {headers: new Headers ({"X-Api-Key": apiKey})};
   
   if(currentSource == 'BBC'){
+    console.log(`${currentURL}this is the bbcUrl`);
     fetch (currentURL,key)
     .then(response => {
         if (response.ok) {
@@ -14,7 +16,6 @@ function fetchInfo(currentURL, currentSource) {
       })
       .then(responseJson => displayResults(responseJson))
       .catch(err => {
-        $('.bbcTitle, #bbc').css('display','flex'); 
         $('#bbc').html(
         `<div class="newsColumn">
         <h4>BBC has no search results for this topic.</h4>
@@ -32,7 +33,6 @@ function fetchInfo(currentURL, currentSource) {
       })
       .then(responseJson => displayResults(responseJson))
       .catch(err => {
-        $('.newYorkTimesTitle, #newYorkTimes').css('display','flex');
         $('#newYorkTimes').html(
         `<div class="newsColumn">
         <h4>The New York Times has no search results for this topic.</h4>
@@ -49,7 +49,6 @@ function fetchInfo(currentURL, currentSource) {
         })
         .then(responseJson => displayResults(responseJson))
         .catch(err => {
-           $('.foxTitle, #fox').css('display','flex');
         $('#fox').html(
         `<div class="newsColumn">
         <h4>Fox News has no search results for this topic.</h4>
@@ -66,7 +65,6 @@ function fetchInfo(currentURL, currentSource) {
           })
           .then(responseJson => displayResults(responseJson))
           .catch(err => {
-                  $('.cnnTitle, #cnn').css('display','flex');
         $('#cnn').html(
         `<div class="newsColumn">
         <h4>CNN has no search results for this topic.</h4>
@@ -83,7 +81,6 @@ function fetchInfo(currentURL, currentSource) {
             })
             .then(responseJson => displayResults(responseJson))
             .catch(err => {
-              $('.elseTitle, #else').css('display','flex');
               $('#else').html(
               `<div class="newsColumn">
               <h4>There are no search results for this topic.</h4>
@@ -99,6 +96,7 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
     let cnnValue = $('#cnnCheck:checked').val();
     
   if(bbcValue == 'bbc-news'){
+    console.log(`${bbcValue} is the bbc vaule AHHHHHH`);
     let bbcUrl = 'https://newsapi.org/v2/everything?language=en&sources=bbc-news&' +
     searchValue + 
     max +
@@ -140,6 +138,7 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
 }
 
 function displayResults(responseJson){ 
+    console.log(responseJson);
     $('#js-errorMessage').empty();
 
     let elseHTML = '';
@@ -161,8 +160,8 @@ function displayResults(responseJson){
     <img src='${responseJson.articles[i].urlToImage}'>
     <p>${responseJson.articles[i].description}</p>
     <a href ="${responseJson.articles[i].url}" target="_blank">
-    ${responseJson.articles[i].url}</a>
-    </div>`;
+    Link</a>
+    </div><br/>`;
     $('#bbc').html(
       `${bbcHTML}`);
     $('.bbcTitle, #bbc').css('display','flex'); 
@@ -175,8 +174,8 @@ function displayResults(responseJson){
       <img src='${responseJson.articles[i].urlToImage}'>
       <p>${responseJson.articles[i].description}</p>
       <a href ="${responseJson.articles[i].url}" target="_blank">
-      ${responseJson.articles[i].url}</a>
-      </div>`;
+      Link</a>
+      </div><br/>`;
       $('#newYorkTimes').html(
         `${newHTML}`);
       $('.newYorkTimesTitle, #newYorkTimes').css('display','flex'); 
@@ -189,8 +188,8 @@ function displayResults(responseJson){
       <img src='${responseJson.articles[i].urlToImage}'>
       <p>${responseJson.articles[i].description}</p>
       <a href ="${responseJson.articles[i].url}" target="_blank">
-      ${responseJson.articles[i].url}</a>
-      </div>`;
+      Link</a>
+      </div><br/>`;
       $('#fox').html(
         `${foxHTML}`);
       $('.foxTitle, #fox').css('display','flex'); 
@@ -203,8 +202,8 @@ function displayResults(responseJson){
       <img src='${responseJson.articles[i].urlToImage}'>
       <p>${responseJson.articles[i].description}</p>
       <a href ="${responseJson.articles[i].url}" target="_blank">
-      ${responseJson.articles[i].url}</a>
-      </div>`;
+      Link</a>
+      </div><br/>`;
       $('#cnn').html(
         `${cnnHTML}`);
       $('.cnnTitle, #cnn').css('display','flex'); 
@@ -217,8 +216,8 @@ function displayResults(responseJson){
       <img src='${responseJson.articles[i].urlToImage}'>
       <p>${responseJson.articles[i].description}</p>
       <a href ="${responseJson.articles[i].url}" target="_blank">
-      ${responseJson.articles[i].url}</a>
-      </div>`;
+      Link</a>
+      </div><br/>`;
       $('#else').html(
         `${elseHTML}`);
       $('.elseTitle, #else').css('display','flex');
@@ -227,6 +226,7 @@ function displayResults(responseJson){
 
 function watchForm() {
   $('form').submit(event => {
+    
     let searchValue = 'q=' + $('#js-searchEntry').val()+'&';
     let max = 'pageSize=' + $('#js-maxResults').val()+'&';
     let sortBy = 'sortBy='+ $('#js-sortOrder').val();
