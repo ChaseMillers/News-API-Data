@@ -11,7 +11,7 @@ body {
 .header{
   height:60px;
   color:white;
-  background: linear-gradient(0deg, rgb(255, 255, 255), rgb(9, 143, 252));
+  background: rgb(8, 98, 172);
   position: absolute;
   top: 0;
   left: 0;
@@ -78,20 +78,23 @@ label{
 }
 
 .results{
+direction: rtl;
   border: 1px solid #ccc;
-  height: 480px;
+  height: 620px;
   overflow: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
   position: relative;
+   transform: rotate(-90deg);
 }
 .newsColumn{
-  display: flex;
-  flex-direction: column;
+  transform: rotate(90deg);
   text-align: center;
-  margin: 10px 10px;
-  font-size:13px;
-  padding:0 20px;
-  background-color:rgb(228, 228, 228);
+  margin: 50px 10px;
+  font-size: 13px;
+  padding: 50px 10px;
+  background-color: rgb(228, 228, 228);
+  max-width: 5000px;
+  max-height: 450px;
 }
 .boxes{
   display:inline-block;
@@ -109,6 +112,7 @@ label{
 
 .elseTitle, #else{
   display: none;
+  flex-direction: column;
 }
 
 .bbcLogo:hover{
@@ -121,6 +125,7 @@ height: 90px;
 }
 .bbcTitle, #bbc{
   display: none;
+  flex-direction: column;
 }
 
 .NYTlogo:hover{
@@ -133,6 +138,7 @@ box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
 }
 .newYorkTimesTitle, #newYorkTimes{
   display: none;
+  flex-direction: column;
 }
 
 .foxLogo:hover{
@@ -144,6 +150,7 @@ height: 90px;
 }
 .foxTitle, #fox{
   display: none;
+  flex-direction: column;
 }
 
 .cnnLogo:hover{
@@ -155,12 +162,14 @@ box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
 }
 .cnnTitle, #cnn{
   display: none;
+  flex-direction: column;
 }
 
 /* Scroller */
 .slider::-webkit-scrollbar {
   width: 30px;
   height:30px;
+  
 }
 /* Track */
 .slider::-webkit-scrollbar-track {
@@ -203,6 +212,13 @@ box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
 }
 
 
+/* height Size for laptops*/
+@media screen and (max-height: 900px) {
+}
+
+/* Tablet Size */
+@media screen and (max-width: 1092px) {
+}
 /*Smartphone size*/
 @media screen and (max-width: 700px) {
 body {
