@@ -2,11 +2,9 @@
 const apiKey = '23bde539d93344af9341bf30f0ac89fc'
 
 function fetchInfo(currentURL, currentSource) {
-  console.log (currentURL)
   const key = {headers: new Headers ({"X-Api-Key": apiKey})};
   
   if(currentSource == 'BBC'){
-    console.log(`${currentURL}this is the bbcUrl`);
     fetch (currentURL,key)
     .then(response => {
         if (response.ok) {
@@ -17,7 +15,7 @@ function fetchInfo(currentURL, currentSource) {
       .then(responseJson => displayResults(responseJson))
       .catch(err => {
         $('#bbc').html(
-        `<div class="newsColumn">
+        `<div class="slide">
         <h4>BBC has no search results for this topic.</h4>
         </div>`);
     });
@@ -34,7 +32,7 @@ function fetchInfo(currentURL, currentSource) {
       .then(responseJson => displayResults(responseJson))
       .catch(err => {
         $('#newYorkTimes').html(
-        `<div class="newsColumn">
+        `<div class="slide">
         <h4>The New York Times has no search results for this topic.</h4>
         </div>`);
       });
@@ -50,7 +48,7 @@ function fetchInfo(currentURL, currentSource) {
         .then(responseJson => displayResults(responseJson))
         .catch(err => {
         $('#fox').html(
-        `<div class="newsColumn">
+        `<div class="slide">
         <h4>Fox News has no search results for this topic.</h4>
         </div>`);
         });
@@ -66,7 +64,7 @@ function fetchInfo(currentURL, currentSource) {
           .then(responseJson => displayResults(responseJson))
           .catch(err => {
         $('#cnn').html(
-        `<div class="newsColumn">
+        `<div class="slide">
         <h4>CNN has no search results for this topic.</h4>
         </div>`);
         });
@@ -82,7 +80,7 @@ function fetchInfo(currentURL, currentSource) {
             .then(responseJson => displayResults(responseJson))
             .catch(err => {
               $('#else').html(
-              `<div class="newsColumn">
+              `<div class="slide">
               <h4>There are no search results for this topic.</h4>
               </div>`);
               });
@@ -96,7 +94,6 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
     let cnnValue = $('#cnnCheck:checked').val();
     
   if(bbcValue == 'bbc-news'){
-    console.log(`${bbcValue} is the bbc vaule AHHHHHH`);
     let bbcUrl = 'https://newsapi.org/v2/everything?language=en&sources=bbc-news&' +
     searchValue + 
     max +
@@ -138,9 +135,8 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
 }
 
 function displayResults(responseJson){ 
-    console.log(responseJson);
     $('#js-errorMessage').empty();
-
+    $('footer').css('position','initial')
     let elseHTML = '';
     let bbcHTML = '';
     let newHTML = '';
@@ -150,79 +146,138 @@ function displayResults(responseJson){
     let newYorkTimesValue = $('#newYorkTimesCheck:checked').val();
     let foxValue = $('#foxCheck:checked').val();
     let cnnValue = $('#cnnCheck:checked').val();
-    
 
-    for (let i = 0; i < responseJson.articles.length || responseJson.totalResults==0; i ++){
+    for (let i = 0; i < responseJson.articles.length || responseJson.totalResults==0; i ++)
+    {
+    let format =
+    `<div class="slides">
+          <div class="slide" id=${i}>
+            <h4>${responseJson.articles[i].title}</h4>
+            <img src='${responseJson.articles[i].urlToImage}'>
+            <span class="description"> 
+              <p>${responseJson.articles[i].description}</p>
+            </span> 
+            <a href ="${responseJson.articles[i].url}" target="_blank">
+            Link</a>
+          </div>
+      </div>`;
+      
       if ( responseJson.articles[i].source.name == "BBC News" && bbcValue == 'bbc-news'){
     bbcHTML +=
-    `<div class="newsColumn">
-    <h4>${responseJson.articles[i].title}</h4>
-    <img src='${responseJson.articles[i].urlToImage}'>
-    <p>${responseJson.articles[i].description}</p>
-    <a href ="${responseJson.articles[i].url}" target="_blank">
-    Link</a>
-    </div><br/>`;
-    $('#bbc').html(
-      `${bbcHTML}`);
+     `${format}`;
+    $('#bbc').html(`${bbcHTML}`);
+    $('.bbcButtons').css('display','initial')
     $('.bbcTitle, #bbc').css('display','flex'); 
+    $('.bbcTitle').css('display','inline'); 
     }
     
     else if ( responseJson.articles[i].source.name == "The New York Times" && newYorkTimesValue == 'the-new-york-times'){
       newHTML +=
-      `<div class="newsColumn">
-      <h4>${responseJson.articles[i].title}</h4>
-      <img src='${responseJson.articles[i].urlToImage}'>
-      <p>${responseJson.articles[i].description}</p>
-      <a href ="${responseJson.articles[i].url}" target="_blank">
-      Link</a>
-      </div><br/>`;
-      $('#newYorkTimes').html(
-        `${newHTML}`);
-      $('.newYorkTimesTitle, #newYorkTimes').css('display','flex'); 
+       `${format}`;
+      $('#newYorkTimes').html(`${newHTML}`);
+      $('.nytButtons').css('display','initial');
+      $('#newYorkTimes').css('display','flex'); 
+      $('.newYorkTimesTitle').css('display','inline'); 
       }
 
     else if ( responseJson.articles[i].source.name == "Fox News" && foxValue == 'fox-news'){
       foxHTML +=
-      `<div class="newsColumn">
-      <h4><b>${responseJson.articles[i].title}</b></h4>
-      <img src='${responseJson.articles[i].urlToImage}'>
-      <p>${responseJson.articles[i].description}</p>
-      <a href ="${responseJson.articles[i].url}" target="_blank">
-      Link</a>
-      </div><br/>`;
-      $('#fox').html(
-        `${foxHTML}`);
-      $('.foxTitle, #fox').css('display','flex'); 
+       `${format}`;
+      $('#fox').html(`${foxHTML}`);
+      $('.foxButtons').css('display','initial')
+      $(' #fox').css('display','flex'); 
+      $('.foxTitle').css('display','inline');
       }
 
     else if ( responseJson.articles[i].source.name == "CNN" && cnnValue == 'cnn'){
       cnnHTML +=
-      `<div class="newsColumn">
-      <h4>${responseJson.articles[i].title}</h4>
-      <img src='${responseJson.articles[i].urlToImage}'>
-      <p>${responseJson.articles[i].description}</p>
-      <a href ="${responseJson.articles[i].url}" target="_blank">
-      Link</a>
-      </div><br/>`;
-      $('#cnn').html(
-        `${cnnHTML}`);
-      $('.cnnTitle, #cnn').css('display','flex'); 
+       `${format}`;
+      $('#cnn').html(`${cnnHTML}`);
+      $('.cnnButtons').css('display','initial')
+      $('#cnn').css('display','flex'); 
+      $('.cnnTitle').css('display','inline'); 
       }
       
     else {
       elseHTML +=
-      `<div class="newsColumn">
-      <h4>${responseJson.articles[i].title}</h4>
-      <img src='${responseJson.articles[i].urlToImage}'>
-      <p>${responseJson.articles[i].description}</p>
-      <a href ="${responseJson.articles[i].url}" target="_blank">
-      Link</a>
-      </div><br/>`;
-      $('#else').html(
-        `${elseHTML}`);
-      $('.elseTitle, #else').css('display','flex');
-    }
-} }
+      `${format}`;
+      $('#else').html(`${elseHTML}`);
+      $('#else').css('display','flex');
+      $('.elseButtons').css('display','initial')
+      $('.elseTitle').css('display','inline');
+    }} 
+  }
+
+function buttonRight(event) {
+  if(event.target.value === "bbc"){
+  document.getElementById('bbc').scrollBy({
+    left: 400,
+    behavior: 'smooth' 
+  }) }
+  else if(event.target.value === "nyt"){
+  document.getElementById('newYorkTimes').scrollBy({
+    left: 400,
+    behavior: 'smooth' 
+  }) }
+  else if(event.target.value === "fox"){
+   document.getElementById('fox').scrollBy({
+    left: 400,
+    behavior: 'smooth' 
+  }) }
+  else if(event.target.value === "cnn"){
+  document.getElementById('cnn').scrollBy({
+    left: 400,
+    behavior: 'smooth' 
+  }) }
+  else {
+  document.getElementById('else').scrollBy({
+    left: 400,
+    behavior: 'smooth' 
+  }) }
+};
+
+function buttonLeft(event) {
+   if(event.target.value === "bbc"){
+  document.getElementById('bbc').scrollBy({
+    left: -400,
+    behavior: 'smooth' 
+  }) }
+  else if(event.target.value === "nyt"){
+  document.getElementById('newYorkTimes').scrollBy({
+    left: -400,
+    behavior: 'smooth' 
+  }) }
+  else if(event.target.value === "fox"){
+   document.getElementById('fox').scrollBy({
+    left: -400,
+    behavior: 'smooth' 
+  }) }
+  else if(event.target.value === "cnn"){
+  document.getElementById('cnn').scrollBy({
+    left: -400,
+    behavior: 'smooth' 
+  }) }
+  else {
+  document.getElementById('else').scrollBy({
+    left: -400,
+    behavior: 'smooth' 
+  }) }
+};
+
+// const buttonRight = document.getElementById('slideRightBbc');
+// buttonRight.onclick = function () {
+//   document.getElementById('bbc').scrollBy({
+//     left: 400,
+//     behavior: 'smooth' 
+//   }) 
+// };
+// const buttonLeft = document.getElementById('slideLeftBbc');
+// buttonLeft.onclick = function () {
+//   document.getElementById('bbc').scrollBy({
+//     left: -400,
+//     behavior: 'smooth' 
+//   }) 
+// };
 
 function watchForm() {
   $('form').submit(event => {
@@ -241,13 +296,15 @@ function watchForm() {
 }
 
 function clear(){
+  $('.resultsTitle').css('display', 'inline')
   $('.bbcTitle, #bbc').css('display','none');
   $('.newYorkTimesTitle, #newYorkTimes').css('display','none'); 
   $('.elseTitle, #else').css('display','none');
   $('.foxTitle, #fox').css('display','none'); 
   $('.cnnTitle, #cnn').css('display','none');
+  $('.elseButtons, .bbcButtons, .nytButtons, .foxButtons, .cnnButtons')
+  .css('display','none');
   $('.results').empty();
-
 }
 
 $(function() {
