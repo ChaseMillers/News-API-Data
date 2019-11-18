@@ -152,7 +152,9 @@ function displayResults(responseJson){
     let format =
     `<div class="slides">
           <div class="slide" id=${i}>
-            <h4>${responseJson.articles[i].title}</h4>
+          <a href ="${responseJson.articles[i].url}"
+          target="_blank"> 
+          <h4>${responseJson.articles[i].title}</h4></a>
             <img src='${responseJson.articles[i].urlToImage}'>
             <span class="description"> 
               <p>${responseJson.articles[i].description}</p>
