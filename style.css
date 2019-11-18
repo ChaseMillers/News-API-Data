@@ -5,7 +5,7 @@
 body {
  
   margin:0;
-    font-family: 'Enriqueta', serif;
+  font-family: 'Enriqueta', serif;
 }
 
 form {
@@ -17,8 +17,8 @@ section {
 }
 
 img{
-  height:200px;
-  width:300px;
+  max-width: 100%;
+  height: auto;
 }
 
 header h1{
@@ -28,12 +28,10 @@ header h1{
   margin: 0;
   padding-left:40px;
 }
-.newsColumn img {
-  max-width: 500px;
-  max-height:250px;
-  display: inline-block;
-  margin-left:auto;
-  margin-right:auto;
+
+.slide img{
+  height:200px;
+  width:300px;
 }
 
 /* Search Bar */
@@ -44,7 +42,7 @@ header h1{
   margin: 0 auto;
   padding: 5px 8px;
   text-align: center;
-  border: 2px solid #478cd1;
+  border: 2px solid #0862ac;
   border-radius: 4px;
 }
 .searchButton{
@@ -61,7 +59,7 @@ input:focus{
   transition: .4s;
 }
 #js-searchEntry{
-  flex: 1 1 50%;
+  width: 50%;
   border: 1px solid rgb(215, 215, 215);
   -webkit-appearance: none;
   padding-left: 5px;
@@ -88,6 +86,7 @@ label{
 .description{
   text-align:center;
   height:55px;
+  margin: 0 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -105,13 +104,12 @@ h3{
 /* used for error text */
 h4{
     overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     font-size: 17px;
     height: 39px;
-    margin-bottom: 6px;
+    margin: 10px 20px 10px 20px;
 }
 
 container {
@@ -171,10 +169,7 @@ label{
   max-height: 450px;
 }
 .boxes{
-  display:inline-block;
   width:100px;
-  text-align:center;
-  margin-top:2px;
 }
 
 .newsColumn p{
@@ -186,71 +181,42 @@ label{
   text-align:center;
 }
 
-.bbcLogo:hover{
--webkit-filter:initial; /* Safari 6.0 - 9.0 */
-filter: initial;
-box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
+.logo{
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+  width: 90px;
 }
+.logo:hover{
+  -webkit-filter:initial; /* Safari 6.0 - 9.0 */
+  filter: initial;
+  box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
+}
+
 input[type=checkbox]:checked + img{
 -webkit-filter:initial; /* Safari 6.0 - 9.0 */
 filter: initial;
 box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
 }
-.bbcLogo{
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-width: 90px;
-height: 90px;
-}
+
 .bbcTitle, #bbc{
   display: none;
   text-align:center;
 }
 
-.NYTlogo:hover{
--webkit-filter:initial; /* Safari 6.0 - 9.0 */
-filter: initial;
-box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
-}
 .NYTlogo{
   -webkit-filter:brightness(90%); /* Safari 6.0 - 9.0 */
   filter:brightness(90%);
-  width: 89px;
-  height: 89px;
-  border: 1px solid #ccc;
 }
 .newYorkTimesTitle, #newYorkTimes{
   display: none;
   text-align:center;
 }
 
-.foxLogo:hover{
--webkit-filter:initial; /* Safari 6.0 - 9.0 */
-filter: initial;
-box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
-}
-.foxLogo{
--webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-filter: grayscale(100%);
-width: 90px;
-height: 90px;
-}
 .foxTitle, #fox{
   display: none;
   text-align:center;
 }
 
-.cnnLogo:hover{
--webkit-filter:initial; /* Safari 6.0 - 9.0 */
-filter: initial;
-box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
-}
-.cnnLogo{
-  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-  filter: grayscale(100%);
-  width: 90px;
-  height: 90px;
-}
 .cnnTitle, #cnn{
   display: none;
   text-align:center;
@@ -261,9 +227,8 @@ box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
 }
 
 .slider {
-  height: 400px;
+  height: 380px;
   margin-bottom: 20px;
-  display: flex;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-snap-type: x mandatory;  
@@ -309,7 +274,7 @@ box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
   border: none;
   transition: .4s;
   font-weight: bold;
-  margin-top: 67.5px;
+  margin-top: 59.5px;
 }
 
 section button:hover{
