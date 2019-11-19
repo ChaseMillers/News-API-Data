@@ -275,7 +275,7 @@ input[type=checkbox]:checked + img{
   border: none;
   transition: .4s;
   font-weight: bold;
-  margin-top: 59.5px;
+  margin-top: 59px;
 }
 @media (hover: hover) {
     section button:hover { 
