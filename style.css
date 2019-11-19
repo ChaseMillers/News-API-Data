@@ -103,13 +103,13 @@ h3{
 
 /* used for error text */
 h4{
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    font-size: 17px;
-    height: 39px;
-    margin: 10px 20px 10px 20px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 17px;
+  height: 39px;
+  margin: 10px 20px 10px 20px;
 }
 
 container {
@@ -186,16 +186,17 @@ label{
   filter: grayscale(100%);
   width: 90px;
 }
-.logo:hover{
+@media (hover: hover) {
+    .logo:hover { 
+      -webkit-filter:initial; /* Safari 6.0 - 9.0 */
+      filter: initial;
+      box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
+     }
+}
+input[type=checkbox]:checked + img{
   -webkit-filter:initial; /* Safari 6.0 - 9.0 */
   filter: initial;
   box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
-}
-
-input[type=checkbox]:checked + img{
--webkit-filter:initial; /* Safari 6.0 - 9.0 */
-filter: initial;
-box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
 }
 
 .bbcTitle, #bbc{
@@ -276,10 +277,15 @@ box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
   font-weight: bold;
   margin-top: 59.5px;
 }
-
-section button:hover{
-background: rgba(0, 0, 0, 0.54);
+@media (hover: hover) {
+    section button:hover { 
+      background: rgba(0, 0, 0, 0.54);
+     }
 }
+.buttons button:hover{ 
+    background: rgba(0, 0, 0, 0.54);
+}
+
 
 .resultsContainer{
   display:flex;
