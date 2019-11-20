@@ -6,109 +6,110 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My News Collection</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="buttons/Buttons.css">
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-   
 </head>
 <body>
-
   <header><h1>All In One News</h1></header>
-
-  <form role='searchForm'> 
-    <label for="News Topic"><h2>Search News Topic</h2></label>
-    <div class="search">
-      <button type="search" type='submit' class="searchButton">Search!</button>
-      <input type="text" id="js-searchEntry" placeholder='News Topic'value=''>
-      <select name='Sort By'id="js-sortOrder"> 
-          <option value="publishedAt">Newest</option>
-          <option value="popularity">Popular</option>
-          <option value="relevancy">Relevant</option>
-      </select>
-    </div>
-    
-    <label class="sources" for="outlet"><p>Select Sources</p></label>
-    <div class="sourcesContainer">
-        <label class="boxes">
-        <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news"><img class="bbcLogo logo" 
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgKk2RHihADwJUAnLB7NU2cq_4928b02Mieon0fD4tz2qWX8V&s">
+  <main>
+    <form> 
+      <label for="News Topic"><h2>Search News Topic</h2>
+      <div class="search">
+        <button type="search" type='submit' class="searchButton">Search!</button>
+        <input type="text" id="js-searchEntry" placeholder='News Topic'value=''>
         </label>
-        <label class="boxes">
-        <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">
-        <img 
-        class="NYTlogo logo" src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg"> 
-        </label>
-        <label class="boxes">
-        <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">
-        <img class="foxLogo logo"src="http://editorial.designtaxi.com/editorial-images/news-fox22092017/1.jpg">
-        </label>
-        <label class="boxes">
-        <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn">
-        <img 
-        class="cnnLogo logo" 
-        src="https://i1.wp.com/obeygiant.com/images/2017/01/cnn-logo-square.png?ssl=1">
-        </label>
-        </div>
-  </form>
+        <select name='Sort By'id="js-sortOrder"> 
+            <option value="publishedAt">Newest</option>
+            <option value="popularity">Popular</option>
+            <option value="relevancy">Relevant</option>
+        </select>
+      </div>
       
-  <span class="resultsTitle" id="title"><h1>RESULTS</h1></span>
-  <section  name='Results'>
-    <span class='elseTitle'>
-    </span>
-    <div class="resultsContainer">
-      <button class="elseButtons buttons"  
-      id="slideLeft" onClick="buttonLeft(event)" type="button">&#10094;</button>
-      <div class="slider" id="else">
-      </div>
-      <button class="elseButtons buttons"  
-      id="slideRight" onClick="buttonRight(event)" type="button">&#10095;</button>
-    </div>
-    
-    <span class='bbcTitle'><h3>BBC News</h3>
-    </span>
-    <div class="resultsContainer">
-      <button class="bbcButtons buttons" value="bbc"
-        id="slideLeft" onClick="buttonLeft(event)" type="button">&#10094;</button>
-      <div class="slider" id="bbc">
-      </div>
-      <button class="bbcButtons buttons" value="bbc"
-      id="slideRight" onClick="buttonRight(event)" type="button">&#10095;</button>
-    </div>
+      <label class="sources" for="outlet"><p>Select Sources</p></label>
+      <div class="sourcesContainer">
+          <label class="boxes" for='bbcCheck'>
+          <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news"><img class="bbcLogo logo" 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgKk2RHihADwJUAnLB7NU2cq_4928b02Mieon0fD4tz2qWX8V&s" alt="BBC News Logo">
+          </label>
+          <label class="boxes">
+          <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">
+          <img 
+          class="NYTlogo logo" src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg" alt="The New York Times Logo"> 
+          </label>
+          <label class="boxes">
+          <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">
+          <img class="foxLogo logo"src="http://editorial.designtaxi.com/editorial-images/news-fox22092017/1.jpg" alt="Fox News Logo">
+          </label>
+          <label class="boxes">
+          <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn">
+          <img 
+          class="cnnLogo logo" 
+          src="https://i1.wp.com/obeygiant.com/images/2017/01/cnn-logo-square.png?ssl=1" alt="CNN News Logo">
+          </label>
+          </div>
+    </form>
 
-    <span class='newYorkTimesTitle'><h3>The New York Times</h3>
-    </span>
-    <div class="resultsContainer">
-      <button class="nytButtons buttons" value="nyt"
-      id="slideLeft" onClick="buttonLeft(event)" type="button">&#10094;</button>
-      <div class="slider" id="newYorkTimes">
+    <span class="resultsTitle" id="title"><h2>RESULTS</h2></span>
+    <section  name='Results'>
+      <span class='elseTitle'>
+      </span>
+      <div class="resultsContainer">
+        <button class="elseButtons buttons leftButtons"  
+        onClick="buttonLeft(event)" type="button">&#10094;</button>
+        <div class="slider" id="else">
+        </div>
+        <button class="elseButtons buttons rightButtons"  
+        onClick="buttonRight(event)" type="button">&#10095;</button>
       </div>
-      <button class="nytButtons buttons" value="nyt"
-      id="slideRight" onClick="buttonRight(event)" type="button">&#10095;</button>
-    </div>
-
-    <span class='foxTitle'><h3>Fox News</h3>
-    </span>
-    <div class="resultsContainer">
-      <button class="foxButtons buttons" value="fox"
-      id="slideLeft" onClick="buttonLeft(event)" type="button">&#10094;</button>
-      <div class="slider" id="fox">
+      
+      <span class='bbcTitle'><h3>BBC News</h3>
+      </span>
+      <div class="resultsContainer">
+        <button class="bbcButtons buttons leftButtons" value="bbc"
+        onClick="buttonLeft(event)" type="button">&#10094;</button>
+        <div class="slider" id="bbc">
+        </div>
+        <button class="bbcButtons buttons rightButtons" value="bbc"
+        onClick="buttonRight(event)" type="button">&#10095;</button>
       </div>
-      <button class="foxButtons buttons" value="fox"
-      id="slideRight" onClick="buttonRight(event)" type="button">&#10095;</button>
-    </div>
 
-    <span class='cnnTitle'><h3>CNN</h3>
-    </span>
-    <div class="resultsContainer">
-      <button class="cnnButtons buttons" value="cnn"
-      id="slideLeft" onClick="buttonLeft(event)" type="button">&#10094;</button>
-      <div class="slider" id="cnn">
-    </div>
-    <button class="cnnButtons buttons" value="cnn"
-    id="slideRight" onClick="buttonRight(event)" type="button">&#10095;</button>
-    </div>
-  </section>
+      <span class='newYorkTimesTitle'><h3>The New York Times</h3>
+      </span>
+      <div class="resultsContainer">
+        <button class="nytButtons buttons leftButtons" value="nyt"
+        onClick="buttonLeft(event)" type="button">&#10094;</button>
+        <div class="slider" id="newYorkTimes">
+        </div>
+        <button class="nytButtons buttons rightButtons" value="nyt"
+        onClick="buttonRight(event)" type="button">&#10095;</button>
+      </div>
+
+      <span class='foxTitle'><h3>Fox News</h3>
+      </span>
+      <div class="resultsContainer">
+        <button class="foxButtons buttons leftButtons" value="fox"
+        onClick="buttonLeft(event)" type="button">&#10094;</button>
+        <div class="slider" id="fox">
+        </div>
+        <button class="foxButtons buttons rightButtons" value="fox"
+        onClick="buttonRight(event)" type="button">&#10095;</button>
+      </div>
+
+      <span class='cnnTitle'><h3>CNN</h3>
+      </span>
+      <div class="resultsContainer">
+        <button class="cnnButtons buttons leftButtons" value="cnn"
+        onClick="buttonLeft(event)" type="button">&#10094;</button>
+        <div class="slider" id="cnn">
+        </div>
+        <button class="cnnButtons buttons rightButtons" value="cnn"
+        onClick="buttonRight(event)" type="button">&#10095;</button>
+      </div>
+    </section>
+  </main>
   <footer><p>Website By Chase Miller</p></footer>
   <script src="script.js"></script>
-  <script src="buttons.js"></script>
+  <script src="buttons/Buttons.js"></script>
 </body>
 </html>
