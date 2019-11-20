@@ -18,6 +18,8 @@ function fetchInfo(currentURL, currentSource) {
         `<div class="slide">
         <h4>BBC has no search results for this topic.</h4>
         </div>`);
+        $('#bbc').css('display','flex'); 
+        $('.bbcTitle').css('display','inline'); 
     });
   }
   
@@ -35,6 +37,8 @@ function fetchInfo(currentURL, currentSource) {
         `<div class="slide">
         <h4>The New York Times has no search results for this topic.</h4>
         </div>`);
+        $('#newYorkTimes').css('display','flex'); 
+        $('.newYorkTimesTitle').css('display','inline'); 
       });
     }
   else if(currentSource == 'FOX'){
@@ -51,6 +55,8 @@ function fetchInfo(currentURL, currentSource) {
         `<div class="slide">
         <h4>Fox News has no search results for this topic.</h4>
         </div>`);
+        $(' #fox').css('display','flex'); 
+        $('.foxTitle').css('display','inline');
         });
       }
     else if(currentSource == 'CNN'){
@@ -67,6 +73,8 @@ function fetchInfo(currentURL, currentSource) {
         `<div class="slide">
         <h4>CNN has no search results for this topic.</h4>
         </div>`);
+        $('#cnn').css('display','flex'); 
+        $('.cnnTitle').css('display','inline'); 
         });
       }
         else{
@@ -83,6 +91,8 @@ function fetchInfo(currentURL, currentSource) {
               `<div class="slide">
               <h4>There are no search results for this topic.</h4>
               </div>`);
+              $('#else').css('display','flex');
+              $('.elseTitle').css('display','inline');
               });
             }
         }
@@ -135,7 +145,6 @@ function UrlConstruction(searchValue, sortBy, currentSelectedSources, max) {
 }
 
 function displayResults(responseJson){ 
-    $('#js-errorMessage').empty();
     $('footer').css('position','initial')
     let elseHTML = '';
     let bbcHTML = '';
@@ -168,7 +177,7 @@ function displayResults(responseJson){
      `${format}`;
     $('#bbc').html(`${bbcHTML}`);
     $('.bbcButtons').css('display','initial')
-    $('.bbcTitle, #bbc').css('display','flex'); 
+    $('#bbc').css('display','flex'); 
     $('.bbcTitle').css('display','inline'); 
     }
     
@@ -186,7 +195,7 @@ function displayResults(responseJson){
        `${format}`;
       $('#fox').html(`${foxHTML}`);
       $('.foxButtons').css('display','initial')
-      $(' #fox').css('display','flex'); 
+      $('#fox').css('display','flex'); 
       $('.foxTitle').css('display','inline');
       }
 
