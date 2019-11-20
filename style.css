@@ -50,9 +50,7 @@ header h1{
   border: 1px solid #ced4da;
   border-radius: 4px;
 }
-input:focus{
-    border-style:none;
-}
+
 .searchButton:hover{
   background-color: #e1e3e6;
   cursor:pointer;
@@ -123,9 +121,6 @@ container {
   background-color: #ccc;
 }
 
-input:focus {
-    outline:none;
-}
 .sources{
   margin-top:70px;
   font-size:19px;
@@ -134,17 +129,25 @@ input:focus {
   margin-bottom:5px;
 }
 
+
 #js-maxResults{
   width:40px;
   height:18px;
   margin-left:5px;
 }
-.js-sourceSelection{
-  display: none;
+
+/* checkbox style */
+input.js-sourceSelection{
+ position:relative;
+ top:50px;
+ opacity:0;
 }
-select:focus {
-    outline:none;
-    background-color:transparent;
+
+input.js-sourceSelection:focus + .logo{
+  -webkit-filter:initial; /* Safari 6.0 - 9.0 */
+  filter: initial;
+  box-shadow: 4px 4px 5px rgba(177, 63, 29, 0.541);
+  border: 2px solid rgb(75, 139, 224);
 }
 
 .sourcesContainer{
@@ -156,8 +159,9 @@ label{
   display:block;
 }
 
-.resultsTitle h1{
-  text-align: center;
+.resultsTitle h2{
+  margin-top:45px;
+  font-size:24px;
 }
 
 .newsColumn{
@@ -242,51 +246,6 @@ input[type=checkbox]:checked + img{
   scroll-snap-align: start;
 }
 
-#slideLeft{
-  left: 0;
-}
-#slideRight{
-  right: 0;
-}
-
-.elseButtons{
-  display:none;
-}
-.bbcButtons{
-  display:none;
-}
-.nytButtons{
-  display:none;
-}
-.foxButtons{
-  display:none;
-}
-.cnnButtons{
-  display:none;
-}
-
-.buttons{
-  position: absolute;
-  background: rgba(52, 52, 52, 0.54);
-  color:white;
-  font-size:28px;
-  width: 70px;
-  height: 200px;
-  border: none;
-  transition: .4s;
-  font-weight: bold;
-  margin-top: 59px;
-}
-@media (hover: hover) {
-    section button:hover { 
-      background: rgba(0, 0, 0, 0.54);
-     }
-}
-.buttons button:hover{ 
-    background: rgba(0, 0, 0, 0.54);
-}
-
-
 .resultsContainer{
   display:flex;
   justify-content:center;
@@ -332,5 +291,6 @@ footer{
 }
 
 footer p{
-  margin:0
+  margin:0;
+  text-align: initial;
 }
