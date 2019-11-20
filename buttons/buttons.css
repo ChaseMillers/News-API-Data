@@ -32,6 +32,7 @@
   transition: .4s;
   font-weight: bold;
   margin-top: 59px;
+  cursor:pointer;
 }
 @media (hover: hover) {
     section button:hover { 
