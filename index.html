@@ -14,40 +14,44 @@
   <header><h1>All In One News</h1></header>
   <main>
     <form> 
-      <label for="News Topic"><h2>Search News Topic</h2>
-      <div class="search">
-        <button type="search" type='submit' class="searchButton">Search!</button>
-        <input type="text" id="js-searchEntry" placeholder='News Topic'value=''>
-        </label>
-        <select name='Sort By'id="js-sortOrder"> 
-            <option value="publishedAt">Newest</option>
-            <option value="popularity">Popular</option>
-            <option value="relevancy">Relevant</option>
-        </select>
-      </div>
+      <label for="js-searchEntry"><h2>Search News Topic</h2></label>
+        <div class="search">
+          <button type="search" type='submit' class="searchButton">Search!</button>
+          <input type="text" id="js-searchEntry" placeholder='News Topic'value=''>
+          <label for="js-sortOrder" aria-label="options">
+            <select name='Sort By'id="js-sortOrder"> 
+                <option value="publishedAt">Newest</option>
+                <option value="popularity">Popular</option>
+                <option value="relevancy">Relevant</option>
+            </select>
+          </label>
+        </div>
       
-      <label class="sources" for="outlet"><p>Select Sources</p></label>
+      <label class="sources"><p>Select Sources</p></label>
       <div class="sourcesContainer">
-          <label class="boxes" for='bbcCheck'>
-          <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news"><img class="bbcLogo logo" 
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgKk2RHihADwJUAnLB7NU2cq_4928b02Mieon0fD4tz2qWX8V&s" alt="BBC News Logo">
-          </label>
-          <label class="boxes">
-          <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times">
+        <label class="boxes" for="bbcCheck">
+          <input type="checkbox" class="js-sourceSelection" id="bbcCheck" value="bbc-news" onClick="blur()"/>
           <img 
-          class="NYTlogo logo" src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg" alt="The New York Times Logo"> 
-          </label>
-          <label class="boxes">
-          <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news">
-          <img class="foxLogo logo"src="http://editorial.designtaxi.com/editorial-images/news-fox22092017/1.jpg" alt="Fox News Logo">
-          </label>
-          <label class="boxes">
-          <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn">
+          class="bbcLogo logo" 
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDgKk2RHihADwJUAnLB7NU2cq_4928b02Mieon0fD4tz2qWX8V&s" alt="BBC News Logo"/>
+        </label>
+        <label class="boxes" for="newYorkTimesCheck">
+          <input type="checkbox" class="js-sourceSelection" id='newYorkTimesCheck'value="the-new-york-times" onClick="blur()"/>
+          <img 
+          class="NYTlogo logo" src="https://myintuition.org/wp-content/uploads/2018/09/the-new-york-times-logo.jpg" alt="The New York Times Logo"/> 
+        </label>
+        <label class="boxes" for="foxCheck">
+          <input type="checkbox" class="js-sourceSelection" id='foxCheck'value="fox-news" onClick="blur()"/>
+          <img 
+          class="foxLogo logo"src="http://editorial.designtaxi.com/editorial-images/news-fox22092017/1.jpg" alt="Fox News Logo"/>
+        </label>
+        <label class="boxes" for="cnnCheck">
+          <input type="checkbox" class="js-sourceSelection" id='cnnCheck'value="cnn" onClick="blur()"/>
           <img 
           class="cnnLogo logo" 
-          src="https://i1.wp.com/obeygiant.com/images/2017/01/cnn-logo-square.png?ssl=1" alt="CNN News Logo">
-          </label>
-          </div>
+          src="https://i1.wp.com/obeygiant.com/images/2017/01/cnn-logo-square.png?ssl=1" alt="CNN News Logo" onClick="blur()"/>
+        </label>
+      </div>
     </form>
 
     <span class="resultsTitle" id="title"><h2>RESULTS</h2></span>
