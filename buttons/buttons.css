@@ -1,0 +1,43 @@
+.leftButtons{
+  left: 0;
+}
+.rightButtons{
+  right: 0;
+}
+
+.elseButtons{
+  display:none;
+}
+.bbcButtons{
+  display:none;
+}
+.nytButtons{
+  display:none;
+}
+.foxButtons{
+  display:none;
+}
+.cnnButtons{
+  display:none;
+}
+
+.buttons{
+  position: absolute;
+  background: rgba(52, 52, 52, 0.54);
+  color:white;
+  font-size:28px;
+  width: 70px;
+  height: 200px;
+  border: none;
+  transition: .4s;
+  font-weight: bold;
+  margin-top: 59px;
+}
+@media (hover: hover) {
+    section button:hover { 
+      background: rgba(0, 0, 0, 0.54);
+     }
+}
+.buttons button:hover{ 
+    background: rgba(0, 0, 0, 0.54);
+}
