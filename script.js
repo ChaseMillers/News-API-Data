@@ -155,12 +155,11 @@ function displayResults(responseJson){
           <a href ="${responseJson.articles[i].url}"
           target="_blank"> 
           <h4>${responseJson.articles[i].title}</h4></a>
-            <img src='${responseJson.articles[i].urlToImage}'>
+            <img src='${responseJson.articles[i].urlToImage}'
+            alt="${responseJson.articles[i].title}">
             <span class="description"> 
               <p>${responseJson.articles[i].description}</p>
             </span> 
-            <a href ="${responseJson.articles[i].url}" target="_blank">
-            Link</a>
           </div>
       </div>`;
       
