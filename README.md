@@ -2,5 +2,5 @@
 ## Live link - https://news-api-v5-1--chasemiller2.repl.co/
 ## Summery
 This News app connects to a news API. Using the search parameters, you can select from a host of news outlets and have them all display results based on topic of choice. This allows the user to search and compare news articles from different news outlets all at the same time.
-![](https://i.imgur.com/tdAjMZX.png)
+![](https://i.imgur.com/3XhvJiN.png)
 
